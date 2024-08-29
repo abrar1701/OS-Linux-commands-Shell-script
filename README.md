@@ -753,34 +753,60 @@ seq 10
 
 seq 10 | sed -n '4,6p'
 ## OUTPUT
-
-
+```
+4
+5
+6
+```
 
 seq 10 | sed -n '2,~4p'
 ## OUTPUT
-
-
+```
+2
+3
+4
+```
 
 seq 3 | sed '2a hello'
 ## OUTPUT
-
-
+```
+1
+2
+hello
+3
+```
 
 seq 2 | sed '2i hello'
 ## OUTPUT
-
+```
+1
+hello
+2
+```
 
 seq 10 | sed '2,9c hello'
 ## OUTPUT
-
+```
+1
+hello
+10
+```
 
 sed -n '2,4{s/^/$/;p}' file23
 ## OUTPUT
-
-
+```
+$1001 | Ram | 10000 | HR
+$1002 | tom |  5000 | Admin
+$1003 | Joe |  7000 | Developer
+```
 
 sed -n '2,4{s/$/*/;p}' file23
-
+## OUTPUT
+```
+1001 | Ram | 10000 | HR*
+1002 | tom |  5000 | Admin*
+1003 | Joe |  7000 | Developer*
+```
 
 #Sorting File content
 cat > file21
@@ -793,7 +819,13 @@ cat > file21
 ``` 
 sort file21
 ## OUTPUT
-
+```
+1001 | Ram | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+1004 | Sit |  7000 | Dev
+1005 | Sam |  5000 | HR
+```
 
 cat > file22
 ```
@@ -806,13 +838,28 @@ cat > file22
 ``` 
 uniq file22
 ## OUTPUT
-
-
+```
+1001 | Ram | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+1005 | Sam |  5000 | HR
+1004 | Sit |  7000 | Dev
+```
 
 #Using tr command
 
 cat file23 | tr [:lower:] [:upper:]
  ## OUTPUT
+```
+1001 | RAM | 10000 | HR
+1001 | RAM | 10000 | HR
+1002 | TOM |  5000 | ADMIN
+1003 | JOE |  7000 | DEVELOPER
+1005 | SAM |  5000 | HR
+1004 | SIT |  7000 | DEV
+1003 | JOE |  7000 | DEVELOPER
+1001 | RAM | 10000 | HR
+```
 
 cat < urllist.txt
 ```
@@ -829,18 +876,33 @@ www. mrcet.... com
  ```
 cat urllist.txt | tr -d ' '
  ## OUTPUT
-
-
+```
+www.yahoo.com
+www.google.com
+www.mrcet....com
+```
  
 cat urllist.txt | tr -d ' ' | tr -s '.'
 ## OUTPUT
-
-
+```
+www.yahoo.com
+www.google.com
+www.mrcet.com
+```
 
 #Backup commands
 tar -cvf backup.tar *
 ## OUTPUT
-
+```
+file1
+file11
+file2
+file21
+file22
+file23
+newfile
+urllist.txt
+```
 
 mkdir backupdir
  
@@ -848,10 +910,29 @@ mv backup.tar backupdir
  
 tar -tvf backup.tar
 ## OUTPUT
-
+```
+-rw-rw-r-- sec/sec          61 2024-08-23 15:29 file1
+-rw-rw-r-- sec/sec          29 2024-08-23 15:39 file11
+-rw-rw-r-- sec/sec          70 2024-08-23 15:30 file2
+-rw-rw-r-- sec/sec         131 2024-08-29 20:38 file21
+-rw-rw-r-- sec/sec         155 2024-08-29 20:39 file22
+-rw-rw-r-- sec/sec         210 2024-08-23 15:57 file23
+-rw-rw-r-- sec/sec          96 2024-08-23 15:50 newfile
+-rw-rw-r-- sec/sec          52 2024-08-29 20:40 urllist.txt
+```
 
 tar -xvf backup.tar
 ## OUTPUT
+```
+file1
+file11
+file2
+file21
+file22
+file23
+newfile
+urllist.txt
+```
 
 gzip backup.tar
 
@@ -882,7 +963,11 @@ stop
 
 cat herecheck.txt
 ## OUTPUT
-
+```
+hello in this world
+i cant stop
+for this non stop movement
+```
 
 cat < scriptest.sh 
 ```bash
