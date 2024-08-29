@@ -1005,13 +1005,34 @@ chmod 777 scriptest.sh
 ./scriptest.sh 1 2 3
 
 ## OUTPUT
-
+```
+“File name is ./scriptest.sh ”
+File name is  scriptest.sh
+“First arg. is ” 1
+“Second arg. is ” 2
+“Third arg. is ” 3
+“Fourth arg. is ”
+The $@ is  1 2 3
+The $\# is  $#
+The $$ is  6208
+    PID TTY          TIME CMD
+   4929 pts/0    00:00:00 bash
+   6208 pts/0    00:00:00 bash
+   6210 pts/0    00:00:00 ps
+```
  
 ls file1
 ## OUTPUT
+```
+file1
+```
 
 echo $?
 ## OUTPUT 
+```
+echo $?
+```
+
 ./one
 bash: ./one: Permission denied
  
